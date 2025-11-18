@@ -117,7 +117,7 @@ def a264617_row(n):
 
 # A132803 Number of simple permutations in S_n, i.e., those whose "cycle graph" (or "breakpoint graph") only contains alternating cycles of length at most 3.
 def a132803(n):
-    #    f = Gu(n).specialization({u:1})     # any number of chromosomes
+    #    f = Gu(n).specialization({u:1})        # use this in multichromosomal case
     f = G0(n+1)
-    s = f.parent().gens()
-    return f.specialization({s[i-1]:ZZ(i<=3) for i in (1..n+2)})
+    return f( *(ZZ(i<=2) for i in range(f.parent().ngens())) )
+
