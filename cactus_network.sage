@@ -6,17 +6,19 @@ Supplementary SageMath code ver. 20251118 for the paper:
 '''
 
 def FGH( N, v, true_leaves = None ):
-    '''
-    Input:
-        `N`, a cactus network, possibly a subnetwork of the bigger ("parent") network we started to work with
-        `v`, a vertex in `N`
-        `true_leaves`, a set of leaves in the parent network; it is omitted when `N` is a parent network
-    '''
+  '''
+  Input:
+    `N`, a cactus network, possibly a subnetwork of the bigger ("parent") network we started to work with
+    `v`, a vertex in `N`
+    `true_leaves`, a set of leaves in the parent network; it is omitted when `N` is a parent network
+  Output: 
+    [ F_v(x), G_v(x), H_v(x) ]
+  '''
 
   #print( "Input: ",N.edges(),"\t",v )
 
   if not N.is_directed_acyclic():
-    raise ValueError, "Input graph is not a network!"
+    raise ValueError("Input graph is not a network!")
 
   if true_leaves is None:
     # N is a parent network, initialize true_leaves:
@@ -68,7 +70,7 @@ def FGH( N, v, true_leaves = None ):
 
     p = N.neighbors_in(t)
     if len(p) != 2:
-      raise ValueError, "Parents error p"
+      raise ValueError("Parents error p")
 
     N.delete_edge(p[0],t)
     # N represents L at this point
@@ -89,7 +91,7 @@ def FGH( N, v, true_leaves = None ):
       while u!=v:
         w = N.neighbors_in(u)
         if len(w)!=1:
-           raise ValueError, "Parents error w"
+           raise ValueError("Parents error w")
         N.delete_edge(w[0],u)
         u = w[0]
 
