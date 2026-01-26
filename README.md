@@ -11,6 +11,7 @@
 * [power2_graphs](https://github.com/maxale/power2_graphs)
 * [egyptian-fractions](https://github.com/maxale/egyptian-fractions)
 * [gpscripts](https://github.com/maxale/gpscripts)
+* [multiplicative functions](https://github.com/maxale/multiplicative_functions)
 * [Recaman_cousin_C](https://github.com/maxale/Recaman_cousin_C)
 * [exp_pol_solver](https://github.com/maxale/exp_pol_solver)
 
