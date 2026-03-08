@@ -14,4 +14,4 @@
 * [multiplicative functions](https://github.com/maxale/multiplicative_functions)
 * [Recaman_cousin_C](https://github.com/maxale/Recaman_cousin_C)
 * [exp_pol_solver](https://github.com/maxale/exp_pol_solver)
-
+* [oeis](https://github.com/maxale/oeis)
