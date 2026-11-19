@@ -1,8 +1,11 @@
 '''
-Supplementary SageMath code ver. 20251118 for the paper:
+Supplementary SageMath code ver. 20261118 for the paper:
 * N. Alexeev and M. A. Alekseyev. "Combinatorial Scoring of Phylogenetic Trees and Networks Based on Homoplasy-Free Characters". Journal of Computational Biology 25:11 (2018), 1203-1219.
   DOI: https://doi.org/10.1089/cmb.2018.0082
   Preprint: arXiv:1602.02841 [q-bio.PE] https://doi.org/10.48550/arXiv.1602.02841
+
+Brief history:
+* 20261118 FIXED loss of edges in the recursive calls
 '''
 
 def FGH( N, v, true_leaves = None ):
@@ -85,6 +88,8 @@ def FGH( N, v, true_leaves = None ):
     # N represents N_{s\t} U N_t at this point
     Nst_FGH = FGH(N, v, true_leaves)
 
+    E = [(p[0],t), (p[1], t)]
+
     # remove edges in the branching path v => t from N to form B
     for q in p:
       u = q
@@ -93,10 +98,13 @@ def FGH( N, v, true_leaves = None ):
         if len(w)!=1:
            raise ValueError("Parents error w")
         N.delete_edge(w[0],u)
+        E.append((w[0],u))
         u = w[0]
 
     # N represents B at this point
     B_FGH = [FGH(N, u, true_leaves) for u in Set(P.closed_interval(v,p[0])) + Set(P.closed_interval(v,p[1]))]
+
+    N.add_edges(E)
 
     B_prodH = prod(fgh[2] for fgh in B_FGH)
 
